@@ -10,7 +10,7 @@ Goto = function(args)
 
 	-- Only allow teleports if destPlayer is in default world
 	if currentPlayer:GetWorld() ~= DefaultWorld then
-		Chat:Send(currentPlayer, "You're not in the default world", settings.textColour)
+		Chat:Send(currentPlayer, "You're not in the default world", settings.textColourAway)
 		return false
 	end
 
@@ -20,15 +20,15 @@ Goto = function(args)
 			if destPlayerName == destPlayer:GetName() then
 				-- Only allow teleports if destination destPlayers are in the default world
 				if destPlayer:GetWorld() ~= DefaultWorld then
-					Chat:Send(currentPlayer, destPlayerName .. " is not in default world", settings.textColour)
+					Chat:Send(currentPlayer, destPlayerName .. " is not in default world", settings.textColourAway)
 					return false
 				end
 
 				-- Notify player they are teleporting
-				Chat:Send(currentPlayer, "Teleporting to " .. destPlayerName, settings.textColour)
+				Chat:Send(currentPlayer, "Teleporting to " .. destPlayerName, settings.textColourAway)
 
 				-- Notify destination player someone is teleporting to them
-				Chat:Send(destPlayer, currentPlayer:GetName() .. " is teleporting to you", settings.textColour)
+				Chat:Send(destPlayer, currentPlayer:GetName() .. " is teleporting to you", settings.textColourHome)
 
 				-- Teleport
 				currentPlayer:SetPosition(destPlayer:GetPosition())
@@ -38,7 +38,7 @@ Goto = function(args)
 		end
 	end
 
-	Chat:Send(currentPlayer, "Player \"" .. destPlayerName .. "\" does not exist", settings.textColour)
+	Chat:Send(currentPlayer, "Player \"" .. destPlayerName .. "\" does not exist", settings.textColourAway)
 	return true
 end
 

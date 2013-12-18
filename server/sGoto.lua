@@ -33,7 +33,7 @@ Goto = function(args)
 		end
 	end
 
-	Chat:Send(currentPlayer, "Player \"" .. destPlayer:GetName() .. "\" does not exist", settings.textColour)
+	Chat:Send(currentPlayer, "Player \"" .. destPlayerName .. "\" does not exist", settings.textColour)
 	return true
 end
 

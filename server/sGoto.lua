@@ -2,6 +2,11 @@ Goto = function(args)
 	-- Find who we want to teleport to
 	local currentPlayer = args.player
 
+	if not string.match(args.text, "^/goto") then
+		-- Not a goto command
+		return true
+	end
+
 	-- Remove any spaces from the end of the message
 	local destPlayerName = string.gsub(args.text, " +$", "")
 
@@ -39,7 +44,7 @@ Goto = function(args)
 	end
 
 	Chat:Send(currentPlayer, "Player \"" .. destPlayerName .. "\" does not exist", settings.textColourAway)
-	return true
+	return false
 end
 
 Events:Subscribe("PlayerChat", Goto)

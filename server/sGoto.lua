@@ -1,7 +1,12 @@
 Goto = function(args)
 	-- Find who we want to teleport to
 	local currentPlayer = args.player
-	local destPlayerName = string.match(args.text, "/goto (.+) ")
+
+	-- Remove any spaces from the end of the message
+	local destPlayerName = string.gsub(args.text, " +$", "")
+
+	-- Get the player name from the message
+	destPlayerName = string.match(destPlayerName, "/goto (.+)")
 
 	-- Only allow teleports if destPlayer is in default world
 	if currentPlayer:GetWorld() ~= DefaultWorld then
